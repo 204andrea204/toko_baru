@@ -15,9 +15,6 @@
 Route::get('/edit', function () {
     return view('admin.barang.edit');
 });
-Route::get('/tambah', function () {
-    return view('admin.barang.add');
-});
 
 Route::get('/edit', function () {
     return view('admin.categori.edit');
@@ -39,7 +36,7 @@ Route::get('/home', function () {
 
 Route::prefix('admin')->group(function(){
 	Route::get('/barang', 'AdminController@indexbarang');
-	Route::get('/barang/add', 'AdminController@addbarang');
+	Route::get('/barang/add', 'AdminController@addbarang')->name('barangAdd');
 	Route::post('/barang/save', 'AdminController@savebarang');
 	Route::get('/barang/edit/{id}', 'AdminController@editbarang');
 	Route::post('/barang/update', 'AdminController@updatebarang');

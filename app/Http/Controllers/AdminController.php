@@ -16,7 +16,8 @@ class AdminController extends Controller
     }
     public function addbarang()
     {
-    	return view('admin.barang.add');
+        $d['categories'] = Categori::all();
+    	return view('admin.barang.add', $d);
     }
     public function savebarang(Request $r)
     {
@@ -32,7 +33,6 @@ class AdminController extends Controller
     	$t->harga = $r->input('harga');
     	$t->stok = $r->input('stok');
     	$t->berat = $r->input('berat');
-    	$t->kategori = $r->input('kategori');
     	$t->deskripsi = $r->input('deskripsi');
     	
     	$t->save();
@@ -40,12 +40,14 @@ class AdminController extends Controller
     }
     public function editbarang($id)
     {
-    	$barang = Barang::find($id);
-    	return view('admin.barang.edit')->with('barang',$barang);
+    	$d['barang'] = Barang::find($id);
+        $d['categories'] = Categori::all();
+    	return view('admin.barang.edit', $d);
     }
     public function updatebarang(Request $m)
     {
     	$s = Barang::find($m->input('id'));
+        $s->kategori_id = $m->input('kategori_id');
     	$s->nama = $m->input('nama');
 
         if($m->file('foto')){
@@ -58,7 +60,6 @@ class AdminController extends Controller
     	$s->harga = $m->input('harga');
         $s->stok = $m->input('stok');
         $s->berat = $m->input('berat');
-        $s->kategori = $m->input('kategori');
         $s->deskripsi = $m->input('deskripsi');
         
     	$s->save();

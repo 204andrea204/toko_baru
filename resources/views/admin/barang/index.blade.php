@@ -8,7 +8,7 @@
                 <div class="card-header card-header-primary">
                   <h4 class="card-title mt-0"> Table on Plain Background</h4>
                   <p class="card-category"> Here is a subtitle for this table</p>
-                  <a href="/tambah" class="btn btn-outline-warning btn-sm" style="float: right;">Tambah</a>
+                  <a href="{{ route('barangAdd') }}" class="btn btn-outline-warning btn-sm" style="float: right;">Tambah</a>
                   </div>
                 </div>
                 <div class="card-body">
@@ -50,7 +50,7 @@
                           <td>Rp. {{$n->harga}}</td>
                           <td>{{$n->stok}}</td>
                           <td>{{$n->berat}}</td>
-                          <td>{{$n->kategori}}</td>
+                          <td>{{$n->kategori->nama}}</td>
                           <td><img src="{{ url('picture/'.$n->foto) }}" style="width: 70px; height: 70px"></td>
 
                           

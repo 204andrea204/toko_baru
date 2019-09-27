@@ -45,13 +45,14 @@
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group bmd-form-group">
-                          <?php 
-                            $categori = \App\Categori::all();
-                          ?>
-                          <select class="form-control" name="kategori">
+                          <select class="form-control" name="kategori_id">
                             <option selected>Pilih Category........</option>
-                            @foreach($categori as $q)
-                            <option value="{{$q->nama}}">{{$q->nama}}</option>
+                            @foreach($categories as $q)
+                              @if($q->id == $barang->kategori_id)
+                              <option value="{{$q->id}}" selected>{{$q->nama}}</option>
+                              @else
+                              <option value="{{$q->id}}">{{$q->nama}}</option>
+                              @endif
                             @endforeach
                           </select>
                         </div>
